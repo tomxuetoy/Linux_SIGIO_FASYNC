@@ -24,6 +24,7 @@ int main(int argc, char **argv)
     action.sa_handler = sighandler;
     action.sa_flags = 0;
 
+    //associate the signal and its handler function
     sigaction(SIGIO, &action, NULL);  //SIGIO: I/O now possible
 
     fcntl(STDIN_FILENO, F_SETOWN, getpid());  //F_SETOWN: Get owner (process receiving SIGIO); the owner process if current process
